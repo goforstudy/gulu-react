@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-    mode: 'production',
+    // mode: 'production',
     entry: {
         index: './lib/index.tsx'
     },
@@ -21,24 +21,4 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'GR',
-            template: 'index.html'
-        })
-    ],
-    // externals: {
-    //     react: {
-    //         commonjs: "react",
-    //         commonjs2: "react",
-    //         amd: "react",
-    //         root: "React"
-    //     },
-    //     'react-dom': {
-    //         commonjs: "react-dom",
-    //         commonjs2: "react-dom",
-    //         amd: "react-dom",
-    //         root: "ReactDOM"
-    //     }
-    // }
 }
