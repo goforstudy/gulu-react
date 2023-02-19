@@ -4,12 +4,12 @@ import { HashRouter as Router, Link, Route, Routes } from 'react-router-dom'
 // import Button from './button';
 import IconExample from './icon/icon.exmaple'
 import DialogExample from './dialog/dialog.example'
-
+import "./index.scss"
 const root = createRoot(document.querySelector('#root') as Element)
 root.render(
   <Router>
     <div>
-      <header className="logo">RG</header>
+      <header className="logo">RG(react-gulu)</header>
       <div>
         <aside>
           <h2>组件</h2>

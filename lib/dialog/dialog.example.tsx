@@ -1,6 +1,29 @@
-import Dialog from "./dialog";
-import React from "react";
+import Dialog, {alert} from './dialog'
+import React, { useState } from 'react'
 
 export default () => {
-    return <Dialog />
+  const [visible, setVisible] = useState(false)
+  const [visible1, setVisible1] = useState(false)
+  return (
+    <>
+      <button onClick={() => setVisible(!visible)}>按钮1</button>
+      <Dialog
+        onClose={() => setVisible(false)}
+        visible={visible}
+        buttons={[<button key={1} onClick={()=>setVisible(false)}>按钮1</button>, <button key={2}>按钮2</button>]}
+      >
+        <div>children</div>
+      </Dialog>
+      <button onClick={() => setVisible1(!visible1)}>按钮2</button>
+      <Dialog
+        onClose={() => setVisible1(false)}
+        closeOnClickMask={false}
+        visible={visible1}
+        buttons={[<button key={1} onClick={()=>setVisible1(false)}>按钮1</button>, <button key={2}>按钮2</button>]}
+      >
+        <div>children</div>
+      </Dialog>
+      <button onClick={() => {alert("这是提示语")}}>alert</button>
+    </>
+  )
 }
