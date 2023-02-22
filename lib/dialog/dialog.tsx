@@ -57,60 +57,7 @@ Dialog.defaultProps = {
   closeOnClickMask: true,
 }
 
-const alert = (content: string) => {
-  const div = document.createElement('div')
-  const root = createRoot(div)
-  const component = (
-    <Dialog
-      visible={true}
-      onClose={() => {
-        root.render(React.cloneElement(component, { visible: false }))
-        root.unmount()
-        div.remove()
-      }}
-    >
-      {content}
-    </Dialog>
-  )
-  document.body.append(div)
-  root.render(component)
-}
-
-const confirm = (
-  content: string,
-  confirm?: () => void,
-  cancel?: () => void
-) => {
-  const div = document.createElement('div')
-  const root = createRoot(div)
-  const onConfirm = () => {
-    root.render(React.cloneElement(component, { visible: false }))
-    root.unmount()
-    div.remove()
-    confirm && confirm()
-  }
-  const onCancel = () => {
-    root.render(React.cloneElement(component, { visible: false }))
-    root.unmount()
-    div.remove()
-    cancel && cancel()
-  }
-  const component = (
-    <Dialog
-      visible={true}
-      onClose={onCancel}
-      buttons={[
-        <button onClick={onConfirm}>确认</button>,
-        <button onClick={onCancel}>取消</button>,
-      ]}
-    >
-      {content}
-    </Dialog>
-  )
-  document.body.append(div)
-  root.render(component)
-}
-const modal = (content: ReactNode) => {
+const modal = (content: ReactNode, buttons?: Array<ReactElement>) => {
   const div = document.createElement('div')
   const root = createRoot(div)
   const onClose = () => {
@@ -119,12 +66,34 @@ const modal = (content: ReactNode) => {
     div.remove()
   }
   const component = (
-    <Dialog visible={true} onClose={onClose}>
+    <Dialog visible={true} onClose={onClose} buttons={buttons}>
       {content}
     </Dialog>
   )
   root.render(component)
   return onClose
+}
+const alert = (content: string) => {
+  modal(content)
+}
+
+const confirm = (
+  content: string,
+  confirm?: () => void,
+  cancel?: () => void
+) => {
+  const onConfirm = () => {
+    onClose()
+    confirm && confirm()
+  }
+  const onCancel = () => {
+    onClose()
+    cancel && cancel()
+  }
+  const onClose = modal(content,[
+    <button onClick={onConfirm}>确认</button>,
+    <button onClick={onCancel}>取消</button>,
+  ] )
 }
 export { alert, confirm, modal }
 export default Dialog
