@@ -1,8 +1,8 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter as Router, Link, Route, Routes } from 'react-router-dom'
+import { HashRouter as Router, NavLink, Route, Routes } from 'react-router-dom'
 // import Button from './button';
-import IconExample from './icon/icon.exmaple'
+import IconDemo from './icon/icon.demo'
 import DialogExample from './dialog/dialog.example'
 import LayoutExample from './layout/layout.example'
 import './index.scss'
@@ -25,22 +25,22 @@ root.render(
           <h2>组件</h2>
           <ul>
             <li>
-              <Link to="/icon">icon</Link>
+              <NavLink to="/icon">icon</NavLink>
             </li>
             <li>
-              <Link to="/button">button</Link>
+              <NavLink to="/button">button</NavLink>
             </li>
             <li>
-              <Link to="/dialog">dialog</Link>
+              <NavLink to="/dialog">dialog</NavLink>
             </li>
             <li>
-              <Link to="/layout">layout</Link>
+              <NavLink to="/layout">layout</NavLink>
             </li>
           </ul>
         </Side>
         <Content className='site-main'>
           <Routes>
-            <Route path="/icon" element={<IconExample />} />
+            <Route path="/icon" element={<IconDemo />} />
             <Route path="/dialog" element={<DialogExample />} />
             <Route path="/layout" element={<LayoutExample />} />
           </Routes>
