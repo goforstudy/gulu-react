@@ -7,18 +7,21 @@ import DialogExample from './dialog/dialog.example'
 import LayoutExample from './layout/layout.example'
 import './index.scss'
 import './example.scss'
-import logo from "./logo.png"
+import logo from './logo.png'
 
 import Layout, { Head, Side, Content, Footer } from './layout/layout'
 const root = createRoot(document.querySelector('#root') as Element)
 root.render(
   <Router>
-    <Layout className='pages'>
-      <Head className="logo">
-        <img src={logo}></img>
+    <Layout className="site-pages">
+      <Head className="site-header">
+        <div className='logo'>
+          <img width="48" height="48" src={logo}></img>
+          gulu-react
+        </div>
       </Head>
       <Layout>
-        <Side>
+        <Side className='site-side'>
           <h2>组件</h2>
           <ul>
             <li>
@@ -35,7 +38,7 @@ root.render(
             </li>
           </ul>
         </Side>
-        <Content>
+        <Content className='site-main'>
           <Routes>
             <Route path="/icon" element={<IconExample />} />
             <Route path="/dialog" element={<DialogExample />} />
@@ -44,6 +47,8 @@ root.render(
         </Content>
       </Layout>
     </Layout>
-    <Footer>footer</Footer>
+    <Footer className='site-footer'>
+      gulu react, component ui
+    </Footer>
   </Router>
 )
