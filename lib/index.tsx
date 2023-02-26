@@ -5,14 +5,20 @@ import { HashRouter as Router, Link, Route, Routes } from 'react-router-dom'
 import IconExample from './icon/icon.exmaple'
 import DialogExample from './dialog/dialog.example'
 import LayoutExample from './layout/layout.example'
-import "./index.scss"
+import './index.scss'
+import './example.scss'
+import logo from "./logo.png"
+
+import Layout, { Head, Side, Content, Footer } from './layout/layout'
 const root = createRoot(document.querySelector('#root') as Element)
 root.render(
   <Router>
-    <div>
-      <header className="logo">RG(react-gulu)</header>
-      <div>
-        <aside>
+    <Layout className='pages'>
+      <Head className="logo">
+        <img src={logo}></img>
+      </Head>
+      <Layout>
+        <Side>
           <h2>组件</h2>
           <ul>
             <li>
@@ -28,15 +34,16 @@ root.render(
               <Link to="/layout">layout</Link>
             </li>
           </ul>
-        </aside>
-        <main>
+        </Side>
+        <Content>
           <Routes>
             <Route path="/icon" element={<IconExample />} />
             <Route path="/dialog" element={<DialogExample />} />
             <Route path="/layout" element={<LayoutExample />} />
           </Routes>
-        </main>
-      </div>
-    </div>
+        </Content>
+      </Layout>
+    </Layout>
+    <Footer>footer</Footer>
   </Router>
 )

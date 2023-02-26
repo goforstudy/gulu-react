@@ -6,14 +6,15 @@
     &-content{
         flex-grow: 1;
     }
-    &.has-side{
+    & &{
+        flex-grow: 1;
+        flex-direction: row;
+    }
+    
+    &-has-side{
         flex-direction: row;
         .gr-layout{
             flex-direction: column;
         }
-    }
-    & &{
-        flex-grow: 1;
-        flex-direction: row;
     }
 }

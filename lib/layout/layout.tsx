@@ -21,3 +21,7 @@ const Layout: React.FC<Props> = (props) => {
 }
 
 export default Layout
+export {default as Head} from './header'
+export {default as Content} from './content'
+export {default as Footer} from './footer'
+export {Side}
